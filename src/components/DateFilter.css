@@ -1,0 +1,50 @@
+.date-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    padding: 6px 10px;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    width: fit-content;
+  }
+  
+  .date-filter label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: #334155;
+  }
+  
+  .react-datepicker-wrapper {
+    width: auto;
+  }
+  
+  .react-datepicker__input-container input {
+    border: none;
+    background: transparent;
+    padding: 4px 6px;
+    font-size: 0.8rem;
+    width: 90px;
+    outline: none;
+  }
+  
+  .filter-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: background-color 0.2s;
+    height: 30px;
+    line-height: 1;
+  }
+  
+  .filter-btn:hover {
+    background-color: #2563eb;
+  }
+  

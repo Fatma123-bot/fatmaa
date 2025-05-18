@@ -1,0 +1,49 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1f2937;
+  padding: 10px 20px;
+  color: white;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.topbar-left,
+.topbar-center,
+.topbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.menu-button svg {
+  width: 22px;
+  height: 22px;
+  color: white;
+}
+
+.logo-img {
+  height: 30px;
+}
+
+.topbar-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}

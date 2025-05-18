@@ -1,0 +1,129 @@
+/* Conteneur principal */
+.stat-cards-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Carte Objectif */
+.objectif-card {
+  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+  color: #0f172a;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.objectif-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Contenu de l'objectif */
+.objectif-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.objectif-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.objectif-input {
+  width: 120px;
+  padding: 0.6rem;
+  border: 2px solid #7dd3fc;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.objectif-input:focus {
+  border-color: #0284c7;
+}
+
+/* Grille des cartes de statistiques */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+/* Style commun des cartes */
+.card {
+  background-color: white;
+  padding: 1.8rem 1.2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Couleurs spécifiques */
+.card.total { background-color: #e0f2fe; color: #1e3a8a; }
+.card.assemblages { background-color: #ccfbf1; color: #065f46; }
+.card.conformes { background-color: #dcfce7; color: #166534; }
+.card.non-conformes { background-color: #fee2e2; color: #991b1b; }
+.card.erreurs { background-color: #fef3c7; color: #92400e; }
+
+/* Icônes */
+.icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  color: inherit;
+}
+
+/* Titres */
+.card h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Valeurs */
+.card p {
+  margin-top: 6px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.confirmation-message {
+  color: green;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  transition: opacity 0.3s ease-in-out;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sidebar-link:hover {
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}

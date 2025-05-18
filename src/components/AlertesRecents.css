@@ -1,0 +1,55 @@
+.alertes-container {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.alertes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.alertes-table th,
+.alertes-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.alertes-table thead {
+  background-color: #f1f5f9;
+}
+
+.alert-icon {
+  color: #f87171;
+  font-size: 1.2rem;
+}
+
+.badge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.badge-erreur {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.badge-warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-info {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.badge-default {
+  background-color: #e5e7eb;
+  color: #374151;
+}
