@@ -7,9 +7,10 @@ const Sidebar = ({ isSidebarOpen }) => {
 
   return (
     <aside
-      className={`fixed top-0 left-0 h-full w-[250px] bg-gray-800 text-white shadow-lg z-50 transition-transform duration-300 ${
-        isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}
+      className={`fixed top-0 left-0 h-full w-[250px] bg-gray-800 text-white shadow-lg z-50 
+        transform transition-transform duration-300
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}
     >
       <div className="p-6 font-bold text-xl border-b border-gray-700">
         SUSO Dashboard
@@ -51,6 +52,7 @@ const Sidebar = ({ isSidebarOpen }) => {
 };
 
 export default Sidebar;
+
 
 
 

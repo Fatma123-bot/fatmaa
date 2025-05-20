@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { database } from "../firebase"; // ✅ Assure-toi que le chemin est correct
+import { database } from "../firebase";
 import { ref, onValue } from "firebase/database";
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend
+} from "chart.js";
 
+// Enregistrement des composants nécessaires pour le graphique
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const ProductionPie = () => {
+const ProductionPieChart = () => {
   const [conformes, setConformes] = useState(0);
   const [nonConformes, setNonConformes] = useState(0);
   const [assemblages, setAssemblages] = useState(0);
 
   useEffect(() => {
     const prodRef = ref(database, "productionData");
-    const unsubscribe = onValue(prodRef, (snapshot) => {
+    onValue(prodRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
         setConformes(data.conformes || 0);
@@ -21,57 +27,67 @@ const ProductionPie = () => {
         setAssemblages(data.assemblages || 0);
       }
     });
-
-    return () => unsubscribe();
   }, []);
 
   const data = {
-    labels: ["Assemblages", "Conformes", "Non-conformes"],
+    labels: ["Conformes", "Non conformes", "Assemblages"],
     datasets: [
       {
-        data: [assemblages, conformes, nonConformes],
-        backgroundColor: ["#2196f3", "#4caf50", "#f44336"],
-        borderWidth: 1,
-      },
-    ],
+        label: "Répartition de production",
+        data: [conformes, nonConformes, assemblages],
+        backgroundColor: ["#4CAF50", "#F44336", "#2196F3"],
+        borderWidth: 1
+      }
+    ]
   };
 
   const options = {
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "bottom",
+        position: "bottom"
       },
       tooltip: {
         callbacks: {
           label: function (context) {
-            const label = context.label || "";
             const value = context.parsed;
-            return `${label}: ${value}`;
-          },
-        },
-      },
-    },
+            return `${context.label}: ${value}`;
+          }
+        }
+      }
+    }
   };
 
   return (
-    <div
-      className="chart-card"
-      style={{
-        padding: "1rem",
-        backgroundColor: "#fff",
-        borderRadius: "12px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-      }}
-    >
-      <h3 style={{ textAlign: "center", marginBottom: "1rem" }}>
-        Répartition Assemblage & Qualité
+    <div style={{
+      maxWidth: "350px",
+      height: "350px",
+      width: "100%",
+      backgroundColor: "#fff",
+      padding: "0.8rem",
+      borderRadius: "12px",
+      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)"
+    }}>
+      <h3 style={{
+        textAlign: "center",
+        marginBottom: "0.5rem",
+        fontSize: "1rem",
+        color: "#333"
+      }}>
+        Répartition
       </h3>
-      <Pie data={data} options={options} />
+      <div style={{ height: "250px" }}>
+        <Pie data={data} options={options} />
+      </div>
     </div>
   );
 };
 
-export default ProductionPie;
+export default ProductionPieChart;
+
+
+
 
 
 

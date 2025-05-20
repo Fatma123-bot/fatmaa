@@ -1,0 +1,17 @@
+.charts-row {
+  display: flex;
+  flex-direction: row;        /* Aligne horizontalement */
+  justify-content: center;    /* Centre le tout */
+  align-items: flex-start;    /* Aligne les cartes en haut */
+  gap: 20px;                  /* Espace entre les cartes */
+  flex-wrap: nowrap;          /* Pas de retour à la ligne */
+  margin: 2rem auto;
+  overflow-x: auto;           /* Scroll horizontal si nécessaire */
+  padding: 1rem;
+}
+
+.chart-wrapper {
+  flex: 0 0 auto;             /* Ne pas étirer automatiquement */
+  width: 350px;               /* Tu peux ajuster */
+  height: 350px;
+}

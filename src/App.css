@@ -170,29 +170,38 @@ body {
 }
 
 /* --- Graphiques --- */
-.charts-row {
+/* Ajoutez ces règles */
+.charts-container {
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 24px;
-  width: 90%;
-  margin: 30px auto;
+  justify-content: space-around;
   flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
 }
 
-.chart-container {
+.chart-card {
   flex: 1;
   min-width: 300px;
-  background-color: #ffffff;
-  padding: 2rem;
+  max-width: 400px;
+  padding: 1rem;
+  background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  min-height: 400px;
-  max-height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
+@media (max-width: 1200px) {
+  .chart-card {
+    min-width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .chart-card {
+    min-width: 100%;
+  }
+}
+
 
 /* --- Animation fade-in --- */
 @keyframes fadeIn {

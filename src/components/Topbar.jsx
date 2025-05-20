@@ -11,7 +11,7 @@ const Topbar = ({ toggleSidebar }) => {
         <button className="menu-button" onClick={toggleSidebar}>
           <FaBars />
         </button>
-        <img src={logo} alt="Logo" className="logo-img" />
+        <img src={logo} alt="Logo" className="Image4.png" />
       </div>
       <div className="topbar-center">
         <h1 className="topbar-title">Dashboard Production</h1>
