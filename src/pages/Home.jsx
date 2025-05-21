@@ -1,68 +1,58 @@
-/**
- * Home.jsx - Page d'accueil du dashboard
- * Contient : filtre de dates, objectif modifiable, cartes statistiques, graphiques, alertes.
- */
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DateFilter from '../components/DateFilter';
 import StatCards from '../components/StatCards';
-import ProductionChart from '../components/ProductionChart';
-import ProductionPie from '../components/ProductionPie';
-import ProductionGauge from '../components/ProductionGauge';
+import ChartComponent from '../components/ChartComponent';
 import Alerts from '../components/Alerts';
+import { firestore } from '../firebase';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+import ProductionGoal from '../components/ProductionGoal'; // ✅ Nouveau composant
 
 const Home = () => {
   const [objectif, setObjectif] = useState(1500);
-  const [enEdition, setEnEdition] = useState(false);
-  const [nouvelObjectif, setNouvelObjectif] = useState(objectif);
+  const [conformes, setConformes] = useState(0);
 
-  const handleSaveObjectif = () => {
-    setObjectif(nouvelObjectif);
-    setEnEdition(false);
-  };
+  // ✅ Écoute en temps réel de l’objectif dans Firestore
+  useEffect(() => {
+    const unsubscribe = onSnapshot(doc(firestore, 'productionData', 'objectif'), (docSnap) => {
+      if (docSnap.exists()) {
+        setObjectif(docSnap.data().value || 1500);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // ✅ Récupération des pièces conformes
+  useEffect(() => {
+    const fetchConformes = async () => {
+      try {
+        const docRef = doc(firestore, 'productionStats', 'compteur');
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setConformes(data.conformes || 0);
+        } else {
+          console.warn("Aucune donnée trouvée pour 'compteur'.");
+        }
+      } catch (error) {
+        console.error('Erreur Firebase :', error);
+      }
+    };
+
+    fetchConformes();
+  }, []);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="w-full max-w-screen-xl mx-auto p-4 bg-gray-50 min-h-screen">
       {/* Filtre de dates */}
       <div className="mb-4">
         <DateFilter />
       </div>
 
-      {/* Objectif Production */}
-      <div className="bg-blue-50 p-4 rounded-md text-center mb-6">
-        <h2 className="text-lg font-semibold">🎯 Objectif de production : {objectif}</h2>
-        {enEdition ? (
-          <div className="mt-4 flex items-center justify-center space-x-2">
-            <input
-              type="number"
-              className="border rounded px-2 py-1 w-24 text-center"
-              value={nouvelObjectif}
-              onChange={(e) => setNouvelObjectif(Number(e.target.value))}
-            />
-            <button
-              className="px-4 py-1 bg-green-500 text-white rounded"
-              onClick={handleSaveObjectif}
-            >
-              Valider
-            </button>
-            <button
-              className="px-4 py-1 bg-gray-300 text-black rounded"
-              onClick={() => {
-                setNouvelObjectif(objectif);
-                setEnEdition(false);
-              }}
-            >
-              Annuler
-            </button>
-          </div>
-        ) : (
-          <button
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-            onClick={() => setEnEdition(true)}
-          >
-            Modifier Objectif
-          </button>
-        )}
+      {/* 🎯 Objectif de production connecté à Firebase */}
+      <div className="mb-6">
+        <ProductionGoal />
       </div>
 
       {/* Statistiques */}
@@ -71,10 +61,8 @@ const Home = () => {
       </div>
 
       {/* Graphiques */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <ProductionChart />
-        <ProductionPie />
-        <ProductionGauge objectif={objectif} />
+      <div className="mb-6">
+        <ChartComponent conformes={conformes} objectif={objectif || 1} />
       </div>
 
       {/* Alertes */}

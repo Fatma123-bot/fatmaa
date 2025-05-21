@@ -1,17 +1,25 @@
-.charts-row {
+/* Container général des graphiques */
+.charts-container {
   display: flex;
-  flex-direction: row;        /* Aligne horizontalement */
-  justify-content: center;    /* Centre le tout */
-  align-items: flex-start;    /* Aligne les cartes en haut */
-  gap: 20px;                  /* Espace entre les cartes */
-  flex-wrap: nowrap;          /* Pas de retour à la ligne */
-  margin: 2rem auto;
-  overflow-x: auto;           /* Scroll horizontal si nécessaire */
-  padding: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* Wrapper pour chaque graphique */
 .chart-wrapper {
-  flex: 0 0 auto;             /* Ne pas étirer automatiquement */
-  width: 350px;               /* Tu peux ajuster */
-  height: 350px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1 1 30%; /* prend minimum 30% avec flex-grow */
+  min-width: 300px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }

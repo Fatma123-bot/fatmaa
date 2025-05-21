@@ -2,48 +2,46 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #1f2937;
-  padding: 10px 20px;
-  color: white;
+  background-color: #5e98c8;
+  padding: 0 1rem;
   height: 60px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.topbar-left,
-.topbar-center,
-.topbar-right {
+.topbar-left {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 .menu-button {
+  font-size: 1.5rem;
   background: none;
   border: none;
   cursor: pointer;
-  margin-right: 15px;
 }
 
-.menu-button svg {
-  width: 22px;
-  height: 22px;
-  color: white;
+.topbar-logo {
+  height: 40px;
+  width: auto;
 }
 
-.logo-img {
-  height: 30px;
+.topbar-center {
+  flex: 1;
+  text-align: center;
 }
 
 .topbar-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
 }
 
-.avatar {
-  width: 32px;
-  height: 32px;
+.topbar-right .avatar {
+  height: 36px;
+  width: 36px;
   border-radius: 50%;
+}
+.topbar {
+  @apply flex items-center justify-between px-4 py-2 bg-white shadow-md z-50 fixed top-0 left-0 w-full;
 }

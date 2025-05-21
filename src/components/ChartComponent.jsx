@@ -1,24 +1,27 @@
+// src/components/ChartComponent.jsx
 import React from 'react';
-import ProductionChart from './ProductionChart';
-import ProductionPieChart from './ProductionPieChart';
-import ProductionGauge from './ProductionGauge';
-import './ChartComponent.css'; // Assure-toi d’importer le fichier CSS
+import NewProductionChart from './NewProductionChart';
+import NewProductionPie from './NewProductionPie';
+import NewProductionGauge from './NewProductionGauge';
+import './ChartComponent.css';
 
 const ChartComponent = () => {
   return (
-    <div className="charts-row">
+    <div className="charts-container">
       <div className="chart-wrapper">
-        <ProductionChart />
+        <NewProductionChart />
       </div>
       <div className="chart-wrapper">
-        <ProductionPieChart />
+        <NewProductionPie />
       </div>
       <div className="chart-wrapper">
-        <ProductionGauge />
+        <NewProductionGauge />
       </div>
     </div>
   );
 };
 
 export default ChartComponent;
+
+
 

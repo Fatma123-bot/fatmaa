@@ -12,26 +12,23 @@ import Historique from './pages/Historique';
 import Alertes from './pages/Alertes';
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // par défaut fermé
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
-    <div className="app-container flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden">
       {/* Sidebar */}
       <Sidebar isSidebarOpen={isSidebarOpen} />
 
-      {/* Contenu principal */}
-      <div
-        className={`main-content flex flex-col flex-1 transition-all duration-300 ${
-          isSidebarOpen ? 'ml-[250px]' : 'ml-0'
-        }`}
-      >
+      {/* Zone principale */}
+      <div className="flex flex-col flex-1">
         {/* Topbar */}
         <Topbar toggleSidebar={toggleSidebar} />
 
-        {/* Routes */}
-        <main className="flex-1 overflow-y-auto p-4 bg-gray-100">
+        {/* Contenu des pages */}
+        <main className="flex-1 overflow-y-auto bg-gray-100 p-4 mt-[60px]">
+          {/* mt-[60px] = espace pour la Topbar */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/historique" element={<Historique />} />
@@ -44,6 +41,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

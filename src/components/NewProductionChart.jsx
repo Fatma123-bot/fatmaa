@@ -24,7 +24,7 @@ ChartJS.register(
   Filler
 );
 
-const ProductionChart = () => {
+const NewProductionChart = () => {
   const [productionData, setProductionData] = useState([]);
   const [assemblyData, setAssemblyData] = useState([]);
   const [error, setError] = useState(null);
@@ -211,5 +211,6 @@ const ProductionChart = () => {
   );
 };
 
-export default ProductionChart;
+export default NewProductionChart;
+
 
